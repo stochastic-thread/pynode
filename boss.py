@@ -1,8 +1,10 @@
 import json
 import http
 
-def document_template():
-  wrap_content('html',wrap_content('head',wrap_content('title', 'dumbtitle'))+wrap_content('body', wrap_content('div','')))
+def document_template(document_config={'title':'titre'}, content='Content'):
+  return(wrap_content('html',
+      wrap_content('head', wrap_content('title', document_config['title']))
+      +wrap_content('body', wrap_content('div',''))))
 
 def tag(tag_label, both=True, opening=None, closing=None):
   ret = None
@@ -40,13 +42,9 @@ def test_add_tag(tags_to_test=['html','head', 'title', 'body']):
     docs.append(item)
 
 def main():
-  print(document_template())
-  # wrap_content('h1', 'Arthur Maroufi Colle')
+  print(document_template(content=wrap_content('h1', 'Arty Farty')))
+  print('\n')
+  wrap_content('h1', 'Arthur Maroufi Colle', debug=True)
 
 if __name__ == "__main__":
     main()
-
-
-# def build_html_document(opts={meta=[]}):
-#  add
-
