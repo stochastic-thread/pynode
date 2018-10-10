@@ -1,6 +1,8 @@
 import json
 import http
 
+def document_template():
+  wrap_content('html',wrap_content('head',wrap_content('title', 'dumbtitle'))+wrap_content('body', wrap_content('div','')))
 
 def tag(tag_label, both=True, opening=None, closing=None):
   ret = None
@@ -25,11 +27,12 @@ def tag(tag_label, both=True, opening=None, closing=None):
        ret = end_tag
   return ret
 
-def wrap_content(tag_label, content,debug=True):
-  tag_wrap = tag(tag_label="h1", both=True)
+def wrap_content(tag_label, content,debug=False):
+  tag_wrap = tag(tag_label, both=True)
+  labeled_tag_w_content = tag_wrap[0]+content+tag_wrap[1]
   if debug:
-    print(tag_wrap)
-  return tag_wrap[0]+content+tag_wrap[1]
+    print(labeled_tag_w_content)
+  return labeled_tag_w_content
 
 def test_add_tag(tags_to_test=['html','head', 'title', 'body']):
   docs = []
@@ -37,12 +40,13 @@ def test_add_tag(tags_to_test=['html','head', 'title', 'body']):
     docs.append(item)
 
 def main():
-  wrap_content('h1', 'Arthur Maroufi Colle')
-  
+  print(document_template())
+  # wrap_content('h1', 'Arthur Maroufi Colle')
+
 if __name__ == "__main__":
     main()
 
 
 # def build_html_document(opts={meta=[]}):
-#  add  
-  
+#  add
+
