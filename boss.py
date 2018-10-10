@@ -1,5 +1,5 @@
-import json
-import http
+import io
+# No dependencies. Everything ex nihilo.
 
 def document_template(document_config={'title':'titre'}, content='Content'):
   return(wrap_content('html',
